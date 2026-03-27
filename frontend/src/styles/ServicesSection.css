@@ -1,0 +1,45 @@
+/* ServicesSection.css */
+.services-section {
+    padding: 120px 0;
+    background-color: #fff;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.service-block {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+.service-block:hover {
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-block .icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #c5a47e;
+}
+
+.service-block .service-title {
+    font-family: 'serif';
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.service-block .service-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+}

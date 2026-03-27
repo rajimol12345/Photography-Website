@@ -1,0 +1,44 @@
+/* Tilia Design System - Variables */
+:root {
+    /* Colors - Grayscale Palette */
+    --color-black: #000000;
+    --color-dark: #1a1a1a;
+    --color-grey-dark: #333333;
+    --color-grey-medium: #666666;
+    --color-grey-light: #999999;
+    --color-grey-lighter: #e5e5e5;
+    --color-border: #dedede;
+    --color-off-white: #f9f9f9;
+    --color-white: #ffffff;
+    --color-accent: #4a7d6d;
+    /* User-requested Tilia Green */
+    --color-gold: #FFD41D;
+    /* Tilia Gold for Awards and Accents */
+
+    /* Typography */
+    --font-serif: "Playfair Display", serif;
+    /* Example serif match */
+    --font-sans: "Inter", sans-serif;
+    /* Example sans match */
+
+    --line-height-base: 1.7;
+    --line-height-heading: 1.2;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 30px;
+    --spacing-lg: 60px;
+    --spacing-xl: 100px;
+    --spacing-xxl: 160px;
+    /* Large vertical rhythm */
+
+    /* Layout */
+    --container-width: 1400px;
+    /* Wide editorial feel */
+    --header-height: 90px;
+
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    --transition-smooth: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

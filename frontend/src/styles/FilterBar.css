@@ -1,0 +1,57 @@
+/* FilterBar.css - Professional Refinement */
+.filter-bar-section {
+    padding: 0 0 80px 0; /* More space before grid */
+    text-align: center;
+}
+
+.filter-bar-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Wider spacing like reference */
+}
+
+.filter-bar-container button {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-grey-medium);
+    cursor: pointer;
+    padding: 0 0 10px 0;
+    position: relative;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.filter-bar-container button:hover {
+    color: var(--color-dark);
+}
+
+.filter-bar-container button.active {
+    color: var(--color-dark);
+    font-weight: 700;
+}
+
+.filter-bar-container button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px; /* Thinner line */
+    background-color: var(--color-gold);
+    transition: width 0.3s ease;
+}
+
+.filter-bar-container button.active::after {
+    width: 100%; /* Line across whole text width */
+}
+
+@media (max-width: 768px) {
+    .filter-bar-container {
+        gap: 20px;
+    }
+}

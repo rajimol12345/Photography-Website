@@ -1,0 +1,43 @@
+/* MeetTheCrew.css */
+.meet-the-crew-section {
+    padding: 120px 0;
+    background-color: #fff;
+}
+
+.meet-the-crew-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    gap: 80px;
+    align-items: center;
+}
+
+.meet-the-crew-left .section-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.meet-the-crew-left .section-heading {
+    font-family: 'serif';
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.meet-the-crew-left p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.meet-the-crew-right img {
+    width: 100%;
+    border-radius: 15px;
+}

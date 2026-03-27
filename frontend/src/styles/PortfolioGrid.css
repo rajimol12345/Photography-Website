@@ -1,0 +1,24 @@
+/* PortfolioGrid.css - Professional Refinement */
+.portfolio-grid-section {
+    padding-top: 20px;
+}
+
+.portfolio-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px; /* Increased gap for cleaner layout */
+}
+
+@media (max-width: 991px) {
+    .portfolio-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-grid-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

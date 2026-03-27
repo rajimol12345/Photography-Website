@@ -1,0 +1,10 @@
+/* GalleryPage.css */
+.gallery-content-section {
+    padding: 60px 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+}

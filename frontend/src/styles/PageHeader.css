@@ -1,0 +1,35 @@
+/* PageHeader.css */
+.page-header-section {
+    position: relative;
+    padding: 150px 0;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+}
+
+.page-header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-header-title {
+    font-family: 'serif';
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.page-header-subtitle {
+    font-size: 18px;
+}

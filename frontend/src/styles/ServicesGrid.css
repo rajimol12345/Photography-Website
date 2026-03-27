@@ -1,0 +1,62 @@
+/* ServicesGrid.css */
+.services-grid-section {
+    position: relative;
+    padding: 120px 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    background-image: url('/assets/cat-hero.jpeg'); /* New background */
+}
+
+.services-grid-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.services-grid-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    gap: 30px;
+}
+
+.service-card {
+    background-color: rgba(0,0,0,0.3);
+    text-align: center;
+    color: #fff;
+    padding: 40px 30px;
+    transition: background-color 0.3s ease;
+}
+
+.service-card:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.service-card .icon {
+    height: 64px;
+    margin-bottom: 30px;
+    color: var(--color-gold); /* Golden color for icons */
+}
+
+.service-card .service-title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-gold); /* Golden color for titles */
+}
+
+.service-card .service-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #eee;
+}

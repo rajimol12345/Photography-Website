@@ -1,0 +1,47 @@
+/* GalleryGrid.css - Professional Masonry Look */
+.gallery-grid-section {
+    padding: 0;
+}
+
+.gallery-grid-container {
+    column-count: 3;
+    column-gap: 30px;
+}
+
+.gallery-item {
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    break-inside: avoid;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.4s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+    .gallery-grid-container {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid-container {
+        column-count: 1;
+    }
+}

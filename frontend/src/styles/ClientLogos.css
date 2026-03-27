@@ -1,0 +1,49 @@
+/* ClientLogos.css - Tilia Refinements */
+.client-logos-section {
+    padding: 100px 0;
+    background-color: var(--color-off-white);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.client-logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 80px;
+    /* Generous spacing */
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.client-logo {
+    opacity: 0.4;
+    transition: all 0.4s ease;
+    filter: grayscale(100%) brightness(1.2);
+}
+
+.client-logo:hover {
+    opacity: 0.9;
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+}
+
+.client-logo img {
+    max-height: 32px;
+    /* Smaller, more elegant logos */
+    width: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .client-logos-container {
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .client-logo img {
+        max-height: 25px;
+    }
+}

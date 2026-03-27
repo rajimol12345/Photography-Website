@@ -1,0 +1,73 @@
+/* GalleryPagination.css - Professional Navigation Style */
+.gallery-pagination-section {
+    padding: 80px 0;
+    background-color: #fafafa;
+    border-top: 1px solid #f0f0f0;
+}
+
+.gallery-pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.pagination-link {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.pagination-link.prev {
+    justify-content: flex-start;
+}
+
+.pagination-link.next {
+    justify-content: flex-end;
+}
+
+.pagination-thumb {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.pagination-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pagination-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination-label {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.pagination-link:hover .pagination-thumb img {
+    transform: scale(1.1);
+}
+
+.pagination-link:hover .pagination-label {
+    color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+    .pagination-text {
+        display: none;
+    }
+}

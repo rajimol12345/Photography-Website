@@ -1,0 +1,75 @@
+/* CTA.css - Refined for Tilia Design */
+.cta-section {
+    position: relative;
+    padding: 160px 0;
+    /* Match --spacing-xxl */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('/assets/slider-3.jpg');
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 26, 26, 0.6);
+    /* Match --color-dark */
+    z-index: 0;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.cta-heading {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 40px;
+    color: var(--color-white) !important;
+    /* Force white for readability */
+    line-height: 1.2;
+}
+
+.cta-button {
+    background-color: var(--color-accent);
+    border: none;
+    color: var(--color-white);
+    padding: 18px 45px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-sans);
+}
+
+.cta-button:hover {
+    background-color: #3d685b;
+    /* Slightly darker shift */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .cta-heading {
+        font-size: 32px;
+    }
+
+    .cta-section {
+        padding: 100px 0;
+    }
+}

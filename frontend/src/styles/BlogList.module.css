@@ -1,0 +1,188 @@
+/* BlogList.module.css */
+
+/* Main Page Layout */
+.blogPage {
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 15px;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.mainContent {
+    flex: 0 0 70%;
+    /* approx 2/3 width */
+    max-width: 70%;
+    padding: 0 15px;
+}
+
+.sidebarWrapper {
+    flex: 0 0 30%;
+    /* approx 1/3 width */
+    max-width: 30%;
+    padding: 0 15px;
+}
+
+/* Blog Grid Layout (Two Column) */
+.blogGrid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.blogItem {
+    flex: 0 0 50%;
+    /* Two columns for Grid Layout */
+    max-width: 50%;
+    padding: 0 15px;
+    margin-bottom: 50px;
+}
+
+/* Blog Card Styling */
+.blogCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageWrapper {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    /* Rounded corners as per Tilia */
+}
+
+.blogImage {
+    width: 100%;
+    /* Enforce a fixed aspect ratio or max-height to reduce height by ~20-30% */
+    height: 250px;
+    /* Controlled height */
+    object-fit: cover;
+    /* Prevents stretching */
+    display: block;
+    transition: transform 0.6s ease;
+    border-radius: 8px;
+    /* Rounded corners */
+}
+
+.blogImage:hover {
+    transform: scale(1.05);
+    /* Subtle zoom */
+}
+
+/* Meta info below title */
+.metaInfo {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+/* Wavy Separator */
+.separator {
+    display: inline-block;
+    width: 25px;
+    height: 6px;
+    margin: 0 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 3 Q 3 0 6 3 T 12 3 T 18 3 T 24 3' stroke='%234a6741' stroke-width='1.5' fill='none' /%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-color: transparent;
+    /* No solid line */
+}
+
+.postTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    /* Reduced margin */
+    font-weight: 700;
+    color: #000;
+}
+
+.postTitle a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.postTitle a:hover {
+    color: #4a6741;
+    /* Green accent */
+}
+
+/* Excerpt and Read More - Keeping them but ensuring style matches minimalism */
+.excerpt {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 20px;
+    display: none;
+    /* Hidden based on screenshot which only shows Title & Meta */
+}
+
+.readMore {
+    display: none;
+    /* Hidden based on screenshot */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.pageLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #eee;
+    color: #222;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pageLink:hover,
+.pageLink.active {
+    background-color: #222;
+    border-color: #222;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .mainContent {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .sidebarWrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .blogItem {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,121 @@
+/* Footer.module.css */
+
+.footerSection {
+    background-color: #fff;
+    padding: 100px 0 40px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.footerColumn h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Wavy Separator */
+.footerColumn h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 3 Q 3 0 6 3 T 12 3 T 18 3 T 24 3' stroke='%234a6741' stroke-width='1.5' fill='none' /%3E");
+    background-repeat: repeat-x;
+}
+
+.aboutText {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+    margin: 0;
+}
+
+.contactList,
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #666;
+}
+
+.icon {
+    color: #4a6741;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkItem {
+    margin-bottom: 10px;
+}
+
+.linkItem a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.linkItem a:hover {
+    color: #4a6741;
+    padding-left: 5px;
+}
+
+.footerBottom {
+    border-top: 1px solid #eee;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .footerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .footerGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .footerSection {
+        padding: 60px 0 30px 0;
+    }
+
+    .footerGrid {
+        margin-bottom: 40px;
+    }
+}
