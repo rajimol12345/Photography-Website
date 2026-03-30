@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const { connectDB } = require('./config/db');
 const { protect, authorizeRoles } = require('./middleware/authMiddleware');
 const multer = require('multer');
@@ -45,12 +46,17 @@ const startServer = async () => {
     await connectDB();
 
     // 2. Middleware Configuration
-    // Bulletproof CORS - Permissive for localized dev environment
+    // CORS configuration for local development and production
     app.use(cors({
-      origin: true,
+      origin: [
+        "http://localhost:5173",
+        "https://photography-website-snap.onrender.com"
+      ],
+      methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true
     }));
 
+    app.use(cookieParser());
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(morgan('dev'));
