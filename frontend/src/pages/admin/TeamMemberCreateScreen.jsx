@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const TeamMemberCreateScreen = () => {
     const [name, setName] = useState('');
@@ -24,7 +24,7 @@ const TeamMemberCreateScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -36,7 +36,7 @@ const TeamMemberCreateScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/team', {
+            await API.post('/api/team', {
                 name,
                 role,
                 imageUrl,

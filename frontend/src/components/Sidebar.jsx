@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -10,14 +10,14 @@ const Sidebar = () => {
     useEffect(() => {
         const fetchSidebarData = async () => {
             try {
-                const { data: postsData } = await axios.get('/api/blogs?limit=5');
+                const { data: postsData } = await API.get('/api/blogs?limit=5');
                 setRecentPosts(postsData.blogs || []);
 
-                const { data: categoriesData } = await axios.get('/api/categories');
+                const { data: categoriesData } = await API.get('/api/categories');
                 setCategories(categoriesData || []);
                 
                 // Assuming tags are derived from blogs for now
-                const { data: blogsData } = await axios.get('/api/blogs');
+                const { data: blogsData } = await API.get('/api/blogs');
                 const allTags = blogsData.blogs.reduce((acc, blog) => {
                     return [...acc, ...blog.tags];
                 }, []);

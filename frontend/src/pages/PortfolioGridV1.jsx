@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import PortfolioGrid from '../components/PortfolioGrid';
 import InstagramStrip from '../components/InstagramStrip';
 
@@ -11,7 +11,7 @@ const PortfolioGridV1 = () => {
     useEffect(() => {
         const fetchPortfolioData = async () => {
             try {
-                const { data } = await axios.get('/api/portfolio');
+                const { data } = await API.get('/api/portfolio');
                 const items = Array.isArray(data) ? data : (data.portfolioItems || []);
                 setPortfolioItems(items);
                 setLoading(false);

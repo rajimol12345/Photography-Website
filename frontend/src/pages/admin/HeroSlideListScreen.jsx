@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const HeroSlideListScreen = () => {
@@ -18,7 +18,7 @@ const HeroSlideListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/hero-slides?pageNumber=${page}`, config); // Use admin specific endpoint with pagination
+                const { data } = await API.get(`/api/admin/hero-slides?pageNumber=${page}`, config); // Use admin specific endpoint with pagination
 
                 // Backend might return array directly or object {heroSlides, page, pages} depending on my recent change.
                 // My recent change to heroSlideController.js returns { heroSlides, page, pages }
@@ -44,7 +44,7 @@ const HeroSlideListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                await axios.delete(`/api/admin/hero-slides/${id}`, config);
+                await API.delete(`/api/admin/hero-slides/${id}`, config);
                 setSlides(slides.filter((slide) => slide._id !== id));
             } catch (error) {
                 console.error('Error deleting hero slide:', error);

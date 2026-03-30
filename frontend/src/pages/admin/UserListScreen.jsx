@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const UserListScreen = () => {
 
     const fetchUsers = async () => {
         try {
-            const { data } = await axios.get('/api/users');
+            const { data } = await API.get('/api/users');
             setUsers(data);
             setLoading(false);
         } catch (err) {
@@ -27,7 +27,7 @@ const UserListScreen = () => {
     const deleteHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
-                await axios.delete(`/api/users/${id}`);
+                await API.delete(`/api/users/${id}`);
                 setUsers(users.filter((user) => user._id !== id));
             } catch (err) {
                 alert(err.response?.data?.message || err.message);

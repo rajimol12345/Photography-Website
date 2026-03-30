@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const PortfolioListScreen = () => {
@@ -22,7 +22,7 @@ const PortfolioListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/portfolio?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/admin/portfolio?pageNumber=${page}`, config);
                 setItems(data.portfolioItems || []);
                 setPages(data.pages || 1);
             } catch (error) {
@@ -41,7 +41,7 @@ const PortfolioListScreen = () => {
     const deleteHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             try {
-                await axios.delete(`/api/admin/portfolio/${id}`);
+                await API.delete(`/api/admin/portfolio/${id}`);
                 setItems(items.filter((item) => item._id !== id));
             } catch (error) {
                 console.error('Error deleting portfolio item:', error);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const HeroSlideEditScreen = () => {
     const { id } = useParams();
@@ -18,7 +18,7 @@ const HeroSlideEditScreen = () => {
     useEffect(() => {
         const fetchSlide = async () => {
             try {
-                const { data } = await axios.get(`/api/hero-slides/admin/${id}`);
+                const { data } = await API.get(`/api/hero-slides/admin/${id}`);
                 setTitle(data.title || '');
                 setSubtitle(data.subtitle || '');
                 setImageUrl(data.imageUrl || '');
@@ -48,7 +48,7 @@ const HeroSlideEditScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -60,7 +60,7 @@ const HeroSlideEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/hero-slides/admin/${id}`, {
+            await API.put(`/api/hero-slides/admin/${id}`, {
                 title,
                 subtitle,
                 imageUrl,

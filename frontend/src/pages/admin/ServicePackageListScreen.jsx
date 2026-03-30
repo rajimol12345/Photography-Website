@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const ServicePackageListScreen = () => {
@@ -19,7 +19,7 @@ const ServicePackageListScreen = () => {
                     },
                 };
                 // Updated to support conditional pagination. Pass pageNumber explicitly.
-                const { data } = await axios.get(`/api/services?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/services?pageNumber=${page}`, config);
                 setPackages(data.servicePackages || []);
                 setPages(data.pages || 1);
             } catch (error) {
@@ -42,7 +42,7 @@ const ServicePackageListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                await axios.delete(`/api/services/${id}`, config);
+                await API.delete(`/api/services/${id}`, config);
                 setPackages(packages.filter((p) => p._id !== id));
             } catch (error) {
                 console.error('Error deleting service package:', error);

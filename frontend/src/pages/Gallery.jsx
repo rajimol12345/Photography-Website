@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 import GalleryGrid from '../components/GalleryGrid';
 
@@ -10,7 +10,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGalleryData = async () => {
       try {
-        const { data } = await axios.get('/api/galleries');
+        const { data } = await API.get('/api/galleries');
         const fetchedGalleries = Array.isArray(data) ? data : (data.galleries || []);
         setGalleries(fetchedGalleries);
         setLoading(false);

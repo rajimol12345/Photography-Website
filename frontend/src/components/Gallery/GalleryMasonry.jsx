@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../../api';
 import { motion } from 'framer-motion';
 
 const GalleryMasonry = () => {
@@ -15,7 +15,7 @@ const GalleryMasonry = () => {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const { data } = await axios.get('/api/gallery').catch(() => ({ data: [] }));
+                const { data } = await API.get('/api/gallery').catch(() => ({ data: [] }));
                 const items = (Array.isArray(data) ? data : (data?.images || []));
                 setImages(items.length > 0 ? items : mockImages);
                 setLoading(false);

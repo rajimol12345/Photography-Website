@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 
 const BlogPreview = () => {
@@ -9,7 +9,7 @@ const BlogPreview = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const { data } = await axios.get('/api/blogs?page=1');
+                const { data } = await API.get('/api/blogs?page=1');
                 setBlogs((data.blogs || []).slice(0, 3));
                 setLoading(false);
             } catch (err) {

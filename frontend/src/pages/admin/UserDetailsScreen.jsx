@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const UserDetailsScreen = () => {
@@ -19,7 +19,7 @@ const UserDetailsScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/users/${id}`, config);
+                const { data } = await API.get(`/api/users/${id}`, config);
                 setUserProfile(data);
             } catch (error) {
                 console.error('Error fetching user details:', error);

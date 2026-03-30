@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const GalleryListScreen = () => {
@@ -23,7 +23,7 @@ const GalleryListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/galleries?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/admin/galleries?pageNumber=${page}`, config);
                 setGalleries(data.galleries || []);
                 setPages(data.pages || 1);
             } catch (error) {
@@ -42,7 +42,7 @@ const GalleryListScreen = () => {
     const deleteHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this gallery?')) {
             try {
-                await axios.delete(`/api/admin/galleries/${id}`);
+                await API.delete(`/api/admin/galleries/${id}`);
                 setGalleries(galleries.filter((gal) => gal._id !== id));
             } catch (error) {
                 console.error('Error deleting gallery:', error);

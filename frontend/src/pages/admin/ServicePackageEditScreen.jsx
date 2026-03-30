@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const ServicePackageEditScreen = () => {
     const { id } = useParams();
@@ -18,7 +18,7 @@ const ServicePackageEditScreen = () => {
     useEffect(() => {
         const fetchService = async () => {
             try {
-                const { data } = await axios.get(`/api/services/${id}`);
+                const { data } = await API.get(`/api/services/${id}`);
                 setName(data.name || '');
                 setCategory(data.category || '');
                 setDescription(data.description || '');
@@ -39,7 +39,7 @@ const ServicePackageEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/services/${id}`, {
+            await API.put(`/api/services/${id}`, {
                 name,
                 category,
                 description,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -31,7 +31,7 @@ const BlogList = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const { data } = await axios.get('/api/blogs');
+                const { data } = await API.get('/api/blogs');
                 const fetchedBlogs = Array.isArray(data) ? data : (data?.blogs || []);
 
                 // Merge strategies: Static first, then API. Deduplicate by slug or title.

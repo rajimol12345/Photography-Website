@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const BlogListScreen = () => {
@@ -22,7 +22,7 @@ const BlogListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/blogs?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/admin/blogs?pageNumber=${page}`, config);
                 setBlogs(data.blogs || []);
                 setPages(data.pages || 1);
             } catch (error) {
@@ -41,7 +41,7 @@ const BlogListScreen = () => {
     const deleteHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this blog?')) {
             try {
-                await axios.delete(`/api/admin/blogs/${id}`);
+                await API.delete(`/api/admin/blogs/${id}`);
                 setBlogs(blogs.filter((blog) => blog._id !== id));
             } catch (error) {
                 console.error('Error deleting blog:', error);

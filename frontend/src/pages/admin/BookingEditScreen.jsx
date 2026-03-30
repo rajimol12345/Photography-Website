@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const BookingEditScreen = () => {
     const { id } = useParams();
@@ -13,7 +13,7 @@ const BookingEditScreen = () => {
     useEffect(() => {
         const fetchBooking = async () => {
             try {
-                const { data } = await axios.get(`/api/admin/bookings/${id}`);
+                const { data } = await API.get(`/api/admin/bookings/${id}`);
                 setBooking(data);
                 setStatus(data.status || 'Pending');
                 setLoading(false);
@@ -29,7 +29,7 @@ const BookingEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/admin/bookings/${id}`, { status });
+            await API.put(`/api/admin/bookings/${id}`, { status });
             navigate('/admin/bookings');
         } catch (error) {
             console.error('Error updating booking status:', error);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 import PortfolioGrid from '../components/PortfolioGrid';
 
@@ -12,7 +12,7 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchPortfolioData = async () => {
       try {
-        const { data } = await axios.get('/api/portfolio');
+        const { data } = await API.get('/api/portfolio');
         const items = Array.isArray(data) ? data : (data.portfolioItems || []);
         setPortfolioItems(items);
         const uniqueCategories = ['All', ...new Set(items.map(item => item.category))].filter(Boolean);

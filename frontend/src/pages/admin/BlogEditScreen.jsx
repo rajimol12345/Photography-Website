@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -19,7 +19,7 @@ const BlogEditScreen = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const { data } = await axios.get(`/api/admin/blogs/${id}`);
+                const { data } = await API.get(`/api/admin/blogs/${id}`);
                 setTitle(data.title);
                 setSlug(data.slug);
                 setContent(data.content);
@@ -48,7 +48,7 @@ const BlogEditScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
 
             setImageUrl(data.files[0].url);
             setUploading(false);
@@ -61,7 +61,7 @@ const BlogEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/admin/blogs/${id}`, {
+            await API.put(`/api/admin/blogs/${id}`, {
                 title,
                 slug,
                 content,

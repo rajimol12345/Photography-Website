@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const TeamMemberEditScreen = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ const TeamMemberEditScreen = () => {
     useEffect(() => {
         const fetchMember = async () => {
             try {
-                const { data } = await axios.get(`/api/team/${id}`);
+                const { data } = await API.get(`/api/team/${id}`);
                 setName(data.name || '');
                 setRole(data.role || '');
                 setImageUrl(data.imageUrl || '');
@@ -44,7 +44,7 @@ const TeamMemberEditScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -56,7 +56,7 @@ const TeamMemberEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/team/${id}`, {
+            await API.put(`/api/team/${id}`, {
                 name,
                 role,
                 imageUrl,

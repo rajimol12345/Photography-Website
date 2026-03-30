@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const TeamMemberListScreen = () => {
@@ -19,7 +19,7 @@ const TeamMemberListScreen = () => {
                     },
                 };
                 // Updated to use pagination query
-                const { data } = await axios.get(`/api/team?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/team?pageNumber=${page}`, config);
                 // Backend now returns { members, page, pages }
                 setMembers(data.members || []);
                 setPages(data.pages || 1);
@@ -43,7 +43,7 @@ const TeamMemberListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                await axios.delete(`/api/team/${id}`, config);
+                await API.delete(`/api/team/${id}`, config);
                 setMembers(members.filter((m) => m._id !== id));
             } catch (error) {
                 console.error('Error deleting team member:', error);

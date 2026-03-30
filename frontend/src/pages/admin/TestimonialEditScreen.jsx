@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const TestimonialEditScreen = () => {
     const { id } = useParams();
@@ -17,7 +17,7 @@ const TestimonialEditScreen = () => {
     useEffect(() => {
         const fetchTestimonial = async () => {
             try {
-                const { data } = await axios.get(`/api/admin/testimonials/${id}`);
+                const { data } = await API.get(`/api/admin/testimonials/${id}`);
                 setAuthor(data.clientName || '');
                 setContent(data.content || '');
                 setRating(data.rating || 5);
@@ -44,7 +44,7 @@ const TestimonialEditScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -56,7 +56,7 @@ const TestimonialEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/admin/testimonials/${id}`, {
+            await API.put(`/api/admin/testimonials/${id}`, {
                 clientName: author,
                 content,
                 rating: Number(rating),

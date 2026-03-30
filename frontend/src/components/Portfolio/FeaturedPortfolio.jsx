@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../../api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -20,7 +20,7 @@ const FeaturedPortfolio = () => {
             try {
                 // Remove this timeout in production, just for smoother dev feeling if API is fast
                 // await new Promise(resolve => setTimeout(resolve, 500)); 
-                const { data } = await axios.get('/api/portfolio').catch(() => ({ data: [] }));
+                const { data } = await API.get('/api/portfolio').catch(() => ({ data: [] }));
                 const items = (Array.isArray(data) ? data : (data?.portfolioItems || [])).filter(item => item.isFeatured || true).slice(0, 4);
                 // Fallback to mock if empty
                 setPortfolioItems(items.length > 0 ? items : mockItems);

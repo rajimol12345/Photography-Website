@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link } from 'react-router-dom';
 
 const FeaturedPortfolio = () => {
@@ -10,7 +10,7 @@ const FeaturedPortfolio = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const { data } = await axios.get('/api/portfolio');
+        const { data } = await API.get('/api/portfolio');
         const items = Array.isArray(data) ? data : (data.portfolioItems || []);
         setPortfolioItems(items.filter(item => item.isFeatured && item.isPublic).slice(0, 6));
         setLoading(false);

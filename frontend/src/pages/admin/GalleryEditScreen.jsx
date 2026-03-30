@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const GalleryEditScreen = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ const GalleryEditScreen = () => {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const { data } = await axios.get(`/api/admin/galleries/${id}`);
+                const { data } = await API.get(`/api/admin/galleries/${id}`);
                 setName(data.name);
                 setCategory(data.category?.name || data.category || ''); // Robust category handling
                 setDescription(data.description || '');
@@ -43,7 +43,7 @@ const GalleryEditScreen = () => {
             //     delete headers.common['Content-Type']; // Only if necessary, but usually axios handles FormData correctly
             //     return data;
             // },
-            const { data } = await axios.post('/api/upload', formData); // Token is handled by global defaults
+            const { data } = await API.post('/api/upload', formData); // Token is handled by global defaults
 
             const uploadedUrls = data.files.map(f => ({ imageUrl: f.url }));
             setImages([...images, ...uploadedUrls]);
@@ -58,7 +58,7 @@ const GalleryEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/admin/galleries/${id}`, {
+            await API.put(`/api/admin/galleries/${id}`, {
                 name,
                 category,
                 description,

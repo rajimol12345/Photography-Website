@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../../api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -17,7 +17,7 @@ const PortfolioGrid = ({ columns = 3 }) => {
     useEffect(() => {
         const fetchPortfolio = async () => {
             try {
-                const { data } = await axios.get('/api/portfolio').catch(() => ({ data: [] }));
+                const { data } = await API.get('/api/portfolio').catch(() => ({ data: [] }));
                 const items = (Array.isArray(data) ? data : (data?.portfolioItems || []));
                 setPortfolioItems(items.length > 0 ? items : mockItems);
                 setLoading(false);

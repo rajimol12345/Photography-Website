@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import './BookingPage.css';
 
 const BookingPage = () => {
@@ -17,7 +17,7 @@ const BookingPage = () => {
     setSubmissionStatus('loading');
     try {
       const bookingData = { name, email, phone, service, eventDate, numberOfPeople: Number(numberOfPeople), message };
-      await axios.post('/api/bookings', bookingData);
+      await API.post('/api/bookings', bookingData);
       setSubmissionStatus('success');
       setName(''); setEmail(''); setPhone(''); setService(''); setEventDate(''); setNumberOfPeople(1); setMessage('');
     } catch (err) {

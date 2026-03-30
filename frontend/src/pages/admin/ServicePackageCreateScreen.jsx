@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const ServicePackageCreateScreen = () => {
     const [name, setName] = useState('');
@@ -16,7 +16,7 @@ const ServicePackageCreateScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/services', {
+            await API.post('/api/services', {
                 name,
                 category,
                 description,

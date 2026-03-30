@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const PortfolioEditScreen = () => {
     const { id } = useParams();
@@ -17,7 +17,7 @@ const PortfolioEditScreen = () => {
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const { data } = await axios.get(`/api/admin/portfolio/${id}`);
+                const { data } = await API.get(`/api/admin/portfolio/${id}`);
                 setTitle(data.title);
                 setCategory(data.category);
                 setImageUrl(data.imageUrl);
@@ -46,7 +46,7 @@ const PortfolioEditScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -58,7 +58,7 @@ const PortfolioEditScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/api/admin/portfolio/${id}`, {
+            await API.put(`/api/admin/portfolio/${id}`, {
                 title,
                 category,
                 imageUrl,

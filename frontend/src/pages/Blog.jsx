@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import BlogItem from '../components/BlogItem';
 import BlogSidebar from '../components/BlogSidebar';
 import Hero from '../components/Hero/Hero';
@@ -54,7 +54,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const { data } = await axios.get('/api/blogs');
+                const { data } = await API.get('/api/blogs');
                 // Ensure we handle the structure returned by getBlogs controller: { blogs, page, pages }
                 console.log('API Response:', data); // DEBUG
                 const fetchedBlogs = data.blogs || [];

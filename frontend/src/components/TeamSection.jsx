@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 
 const staticTeamMembers = [
   { _id: '1', name: 'John Doe', role: 'Lead Photographer', imageUrl: '/assets/team-1.jpg' },
@@ -15,7 +15,7 @@ const TeamSection = () => {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const { data } = await axios.get('/api/team');
+        const { data } = await API.get('/api/team');
         const fetchedMembers = data.teamMembers || data.team || (Array.isArray(data) ? data : []);
         setTeam([...staticTeamMembers, ...fetchedMembers]);
       } catch (err) {

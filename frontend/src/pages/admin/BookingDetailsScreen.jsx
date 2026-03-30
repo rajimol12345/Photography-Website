@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const BookingDetailsScreen = () => {
@@ -20,7 +20,7 @@ const BookingDetailsScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/bookings/${id}`, config);
+                const { data } = await API.get(`/api/admin/bookings/${id}`, config);
                 setBooking(data);
             } catch (error) {
                 console.error('Error fetching booking details:', error);
@@ -43,7 +43,7 @@ const BookingDetailsScreen = () => {
                     Authorization: `Bearer ${user?.token}`,
                 },
             };
-            const { data } = await axios.put(`/api/admin/bookings/${id}/status`, { status: newStatus }, config);
+            const { data } = await API.put(`/api/admin/bookings/${id}/status`, { status: newStatus }, config);
             setBooking(data);
         } catch (error) {
             console.error('Error updating status:', error);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const GalleryCreateScreen = () => {
     const [name, setName] = useState('');
@@ -24,7 +24,7 @@ const GalleryCreateScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             const uploadedUrls = data.files.map(f => ({ imageUrl: f.url }));
             setImages([...images, ...uploadedUrls]);
             setUploading(false);
@@ -37,7 +37,7 @@ const GalleryCreateScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/admin/galleries', {
+            await API.post('/api/admin/galleries', {
                 name,
                 category,
                 description,

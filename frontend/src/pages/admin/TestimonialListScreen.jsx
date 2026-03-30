@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const TestimonialListScreen = () => {
@@ -20,7 +20,7 @@ const TestimonialListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/testimonials?pageNumber=${page}`, config);
+                const { data } = await API.get(`/api/admin/testimonials?pageNumber=${page}`, config);
                 setTestimonials(data.testimonials || []);
                 setPages(data.pages || 1);
             } catch (error) {
@@ -43,7 +43,7 @@ const TestimonialListScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                await axios.delete(`/api/admin/testimonials/${id}`, config);
+                await API.delete(`/api/admin/testimonials/${id}`, config);
                 // Re-fetch or filter. Filtering is faster ui.
                 setTestimonials(testimonials.filter((t) => t._id !== id));
             } catch (error) {

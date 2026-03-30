@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../../api';
 import { motion } from 'framer-motion';
 
 const TeamSection = () => {
@@ -15,7 +15,7 @@ const TeamSection = () => {
     useEffect(() => {
         const fetchTeam = async () => {
             try {
-                const { data } = await axios.get('/api/team').catch(() => ({ data: [] }));
+                const { data } = await API.get('/api/team').catch(() => ({ data: [] }));
                 const items = (Array.isArray(data) ? data : (data?.teamMembers || []));
                 setTeam(items.length > 0 ? items : mockTeam);
                 setLoading(false);

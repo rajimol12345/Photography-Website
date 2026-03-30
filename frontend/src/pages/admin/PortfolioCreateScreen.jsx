@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const PortfolioCreateScreen = () => {
     const [title, setTitle] = useState('');
@@ -25,7 +25,7 @@ const PortfolioCreateScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -37,7 +37,7 @@ const PortfolioCreateScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/admin/portfolio', {
+            await API.post('/api/admin/portfolio', {
                 title,
                 category,
                 imageUrl,

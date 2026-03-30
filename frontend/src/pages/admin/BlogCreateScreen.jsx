@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -21,7 +21,7 @@ const BlogCreateScreen = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const { data } = await axios.get('/api/categories');
+                const { data } = await API.get('/api/categories');
                 const cats = Array.isArray(data) ? data : data.categories || [];
                 setCategories(cats);
                 if (cats.length > 0) setCategory(cats[0]._id); // Default to first
@@ -45,7 +45,7 @@ const BlogCreateScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
 
             setImageUrl(data.files[0].url);
             setUploading(false);
@@ -59,7 +59,7 @@ const BlogCreateScreen = () => {
         e.preventDefault();
         setError(null);
         try {
-            await axios.post('/api/admin/blogs', {
+            await API.post('/api/admin/blogs', {
                 title,
                 slug,
                 excerpt,

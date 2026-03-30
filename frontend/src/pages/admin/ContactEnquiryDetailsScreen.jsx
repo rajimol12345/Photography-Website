@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 import { useAuth } from '../../context/AuthContext';
 
 const ContactEnquiryDetailsScreen = () => {
@@ -22,7 +22,7 @@ const ContactEnquiryDetailsScreen = () => {
                         Authorization: `Bearer ${user?.token}`,
                     },
                 };
-                const { data } = await axios.get(`/api/admin/contact-enquiries/${id}`, config);
+                const { data } = await API.get(`/api/admin/contact-enquiries/${id}`, config);
                 setEnquiry(data);
             } catch (error) {
                 console.error('Error fetching enquiry details:', error);
@@ -48,7 +48,7 @@ const ContactEnquiryDetailsScreen = () => {
             };
             // Assuming PUT /:id updates the status, or a specific endpoint
             // Based on router: PUT /:id calls updateEnquiryStatus
-            const { data } = await axios.put(`/api/admin/contact-enquiries/${id}`, { status: 'read' }, config);
+            const { data } = await API.put(`/api/admin/contact-enquiries/${id}`, { status: 'read' }, config);
             setEnquiry(data);
         } catch (error) {
             console.error('Error updating status:', error);

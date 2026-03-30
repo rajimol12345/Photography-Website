@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const BookingListScreen = () => {
     const [bookings, setBookings] = useState([]);
@@ -9,7 +9,7 @@ const BookingListScreen = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const { data } = await axios.get('/api/admin/bookings');
+                const { data } = await API.get('/api/admin/bookings');
                 setBookings(data.bookings || []);
             } catch (error) {
                 console.error('Error fetching bookings:', error);

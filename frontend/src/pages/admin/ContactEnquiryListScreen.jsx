@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const ContactEnquiryListScreen = () => {
     const [enquiries, setEnquiries] = useState([]);
@@ -9,7 +9,7 @@ const ContactEnquiryListScreen = () => {
     useEffect(() => {
         const fetchEnquiries = async () => {
             try {
-                const { data } = await axios.get('/api/admin/contact-enquiries');
+                const { data } = await API.get('/api/admin/contact-enquiries');
                 setEnquiries(data.enquiries || []);
             } catch (error) {
                 console.error('Error fetching enquiries:', error);
@@ -23,7 +23,7 @@ const ContactEnquiryListScreen = () => {
     const deleteHandler = async (id) => {
         if (window.confirm('Are you sure you want to delete this enquiry?')) {
             try {
-                await axios.delete(`/api/admin/contact-enquiries/${id}`);
+                await API.delete(`/api/admin/contact-enquiries/${id}`);
                 setEnquiries(enquiries.filter((enq) => enq._id !== id));
             } catch (error) {
                 console.error('Error deleting enquiry:', error);

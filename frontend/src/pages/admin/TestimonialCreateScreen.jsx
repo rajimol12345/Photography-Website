@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../api';
 
 const TestimonialCreateScreen = () => {
     const [author, setAuthor] = useState('');
@@ -25,7 +25,7 @@ const TestimonialCreateScreen = () => {
                 },
             };
 
-            const { data } = await axios.post('/api/upload', formData, config);
+            const { data } = await API.post('/api/upload', formData, config);
             setImageUrl(data.files[0].url);
             setUploading(false);
         } catch (error) {
@@ -37,7 +37,7 @@ const TestimonialCreateScreen = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/admin/testimonials', {
+            await API.post('/api/admin/testimonials', {
                 clientName: author,
                 content,
                 rating: Number(rating),

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api';
 import Hero from '../components/Hero/Hero';
 import '../styles/BlogSingle.css';
 
@@ -82,7 +82,7 @@ const BlogSingle = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/blogs/slug/${slug}`);
+        const { data } = await API.get(`/api/blogs/slug/${slug}`);
         setBlog(data);
         setLoading(false);
       } catch (err) {
@@ -103,7 +103,7 @@ const BlogSingle = () => {
 
     const fetchRecentPosts = async () => {
       try {
-        const { data } = await axios.get('/api/blogs/recent');
+        const { data } = await API.get('/api/blogs/recent');
         setRecentPosts(data);
       } catch (err) {
         console.error("Failed to fetch recent posts:", err);

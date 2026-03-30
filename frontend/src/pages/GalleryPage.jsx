@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api';
 import PageHeader from '../components/PageHeader';
 import GalleryGrid from '../components/GalleryGrid';
 import GalleryPagination from '../components/GalleryPagination';
@@ -13,7 +13,7 @@ const GalleryPage = () => {
     React.useEffect(() => {
         const fetchGalleries = async () => {
             try {
-                const { data } = await axios.get('/api/galleries');
+                const { data } = await API.get('/api/galleries');
                 setGalleries(data);
                 setLoading(false);
             } catch (error) {

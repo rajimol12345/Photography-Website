@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
-import axios from 'axios';
+import API from '../api';
 
 const AuthContext = createContext();
 
@@ -12,12 +12,10 @@ export const AuthProvider = ({ children }) => {
 
   /**
    * Logout - Total session clearance
-   * Defined early to avoid initialization errors in useEffect
    */
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('user');
-    delete axios.defaults.headers.common['Authorization'];
     console.log('[AUTH] User logged out successfully');
   }, []);
 
@@ -29,10 +27,6 @@ export const AuthProvider = ({ children }) => {
         try {
           const userData = JSON.parse(storedUser);
           setUser(userData);
-          // Set persistent auth header
-          if (userData.token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`;
-          }
         } catch (error) {
           console.error('[AUTH] Failed to parse session:', error);
           localStorage.removeItem('user');
@@ -43,8 +37,8 @@ export const AuthProvider = ({ children }) => {
 
     initializeAuth();
 
-    // Axios Interceptor for handling 401 Unauthorized globally
-    const interceptor = axios.interceptors.response.use(
+    // API Interceptor for handling 401 Unauthorized globally
+    const interceptor = API.interceptors.response.use(
       (response) => response,
       (error) => {
         if (error.response && error.response.status === 401) {
@@ -56,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     );
 
     return () => {
-      axios.interceptors.response.eject(interceptor);
+      API.interceptors.response.eject(interceptor);
     };
   }, [logout]);
 
@@ -65,11 +59,10 @@ export const AuthProvider = ({ children }) => {
    */
   const login = async (email, password) => {
     try {
-      const { data } = await axios.post('/api/users/login', { email, password });
+      const { data } = await API.post('/api/users/login', { email, password });
 
       setUser(data);
       localStorage.setItem('user', JSON.stringify(data));
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
       console.log(`[AUTH] Login successful for: ${data.email}`);
       return data;
@@ -85,12 +78,11 @@ export const AuthProvider = ({ children }) => {
    */
   const register = async (name, email, password, role = 'User') => {
     try {
-      const { data } = await axios.post('/api/users/register', { name, email, password, role });
+      const { data } = await API.post('/api/users/register', { name, email, password, role });
 
       // Automatic immediate login
       setUser(data);
       localStorage.setItem('user', JSON.stringify(data));
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
       console.log(`[AUTH] Registration successful for: ${data.email}`);
       return data;
