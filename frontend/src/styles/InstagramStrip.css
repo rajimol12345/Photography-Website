@@ -1,12 +1,25 @@
 /* InstagramStrip.css */
 .instagram-strip-section {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .instagram-item {
     position: relative;
-    flex: 1;
+    flex: 1 0 16.666%; /* Default for 6 items */
     overflow: hidden;
+}
+
+@media (max-width: 991px) {
+    .instagram-item {
+        flex: 1 0 33.333%; /* 3 per row on tablet */
+    }
+}
+
+@media (max-width: 575px) {
+    .instagram-item {
+        flex: 1 0 50%; /* 2 per row on mobile */
+    }
 }
 
 .instagram-item::after {

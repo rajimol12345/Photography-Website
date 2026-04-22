@@ -43,3 +43,19 @@
     line-height: 1.7;
     color: #555;
 }
+
+@media (max-width: 991px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-section {
+        padding: 80px 0;
+    }
+}

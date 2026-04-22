@@ -199,19 +199,39 @@
 }
 
 /* Responsive */
+@media (max-width: 991px) {
+    .title {
+        font-size: 56px;
+    }
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 42px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 30px;
     }
 
     .navBtn {
         display: none;
         /* Hide arrows on mobile, use swipe or dots */
     }
+}
 
-    .prevBtn,
-    .nextBtn {
-        width: 40px;
-        height: 40px;
+@media (max-width: 480px) {
+    .title {
+        font-size: 32px;
+    }
+    
+    .ctaBtn {
+        padding: 12px 25px;
     }
 }

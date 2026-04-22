@@ -191,3 +191,50 @@
         padding-top: 0;
     }
 }
+
+@media (max-width: 767px) {
+    .about-story-section {
+        padding: 80px 0;
+    }
+    
+    .about-story-container {
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .about-story-left .section-heading {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .awards-row {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .award-image {
+        max-height: 80px;
+    }
+
+    .stats-grid {
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .stat-number {
+        font-size: 32px;
+    }
+
+    .bullet-list-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .philosophy-note {
+        margin-top: 40px !important;
+        padding-left: 20px;
+        font-size: 15px;
+    }
+}

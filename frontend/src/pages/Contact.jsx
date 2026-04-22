@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/ContactPage.module.css';
 import InstagramStrip from '../components/InstagramStrip';
+import API from '../api';
 
 const Contact = () => {
     const [formData, setFormData] = React.useState({
@@ -21,8 +22,7 @@ const Contact = () => {
         setStatus({ loading: true, success: false, error: '' });
 
         try {
-            const { default: axios } = await import('axios'); // Dynamic import or assume it's available if added to top
-            await axios.post('/api/contact-enquiries', formData);
+            await API.post('/api/contact-enquiries', formData);
             setStatus({ loading: false, success: true, error: '' });
             setFormData({ name: '', email: '', phone: '', message: '' });
             alert('Message sent successfully!');

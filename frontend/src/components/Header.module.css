@@ -103,7 +103,6 @@
 
 /* Mobile Navigation */
 .nav-links-mobile {
-    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -258,6 +257,13 @@
 
 /* RESPONSIVE */
 @media (max-width: 991px) {
+    .main-nav {
+        height: 80px;
+    }
+
+    .logo-img {
+        height: 60px;
+    }
 
     .nav-container,
     .book-now-btn {
@@ -271,4 +277,36 @@
     .header-right {
         margin-left: auto;
     }
+
+    .nav-links-mobile {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #ffffff;
+        z-index: 1001;
+        overflow-y: auto;
+        display: flex; /* Changed from none to flex since it is conditionally rendered in JSX */
+    }
+
+    .nav-links-mobile.nav-open {
+        animation: fadeIn 0.3s ease;
+    }
+
+    .nav-links-mobile ul {
+        width: 100%;
+        padding: 40px 0;
+    }
+
+    .nav-links-mobile li a {
+        font-size: 18px;
+        padding: 15px 0;
+        font-weight: 600;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

@@ -83,3 +83,23 @@
     height: 16px;
 }
 
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-section {
+        padding: 80px 0;
+    }
+
+    .team-header .section-heading {
+        font-size: 36px;
+    }
+}
+

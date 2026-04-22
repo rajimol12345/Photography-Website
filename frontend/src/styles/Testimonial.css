@@ -98,3 +98,19 @@
     background-color: #fff;
     transform: scale(1.2);
 }
+
+@media (max-width: 767px) {
+    .testimonial-section {
+        padding: 100px 0;
+    }
+
+    .testimonial-text {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    .quote-icon {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+}
